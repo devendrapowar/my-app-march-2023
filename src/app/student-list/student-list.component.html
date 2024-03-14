@@ -1,12 +1,19 @@
 <h3>Students</h3>
 <!-- <button class="btn btn-primary" (click)="showTable()">Show Student</button> -->
-<div class="mb-3">
-    <label for="searchByName" class="form-label">Search</label>
-    <input type="text" 
-        class="form-control" id="searchByName"
-             [(ngModel)]="searchByName" placeholder="Enter"
-                    (input)="searchStudent()">
+<div class="row mb-3">
+    <div class="col-10">
+        <div>
+            <label for="searchByName" class="form-label">Search</label>
+            <input type="text" class="form-control" id="searchByName" [(ngModel)]="searchByName" 
+            placeholder="Enter"
+                (input)="searchStudent()">
+        </div>
+    </div>
+    <div class="col-2 align-self-end">
+        <button class="btn btn-primary" (click)="goTo()">New</button>
+    </div>
 </div>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,14 +30,15 @@
             <th>
                 number
             </th>
-            
+
             <th>
                 action
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let std of filteredStudent; let i = index" [ngClass]="{'even-student': i%2==0, 'odd-student': i%2!=0}">
+        <tr *ngFor="let std of filteredStudent; let i = index"
+            [ngClass]="{'even-student': i%2==0, 'odd-student': i%2!=0}">
             <td>{{std.name}}{{i}}</td>
             <td>{{std.age}}</td>
             <td>{{std.email}}</td>
