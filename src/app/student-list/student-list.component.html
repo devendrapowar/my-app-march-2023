@@ -1,1 +1,41 @@
-<p>student-list works!</p>
+<h3>Students</h3>
+<!-- <button class="btn btn-primary" (click)="showTable()">Show Student</button> -->
+<div class="mb-3">
+    <label for="searchByName" class="form-label">Search</label>
+    <input type="text" 
+        class="form-control" id="searchByName"
+             [(ngModel)]="searchByName" placeholder="Enter"
+                    (input)="searchStudent()">
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Email
+            </th>
+
+            <th>
+                number
+            </th>
+            
+            <th>
+                action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let std of filteredStudent; let i = index" [ngClass]="{'even-student': i%2==0, 'odd-student': i%2!=0}">
+            <td>{{std.name}}{{i}}</td>
+            <td>{{std.age}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.number}}</td>
+            <td><button class="btn btn-primary" (click)="deleteStudent(i)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

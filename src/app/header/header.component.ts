@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './header.component.scss'
 })
 
-export class HeaderComponent {
+export class HeaderComponent  { //implements OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked
   public title: string;
   public search: string;
 
@@ -19,9 +19,34 @@ export class HeaderComponent {
     this.search = 'test';
   }
 
+  // ngOnInit(): void {
+  //   console.log('on init fire');
+  // }
+
+  // ngDoCheck(): void {
+  //   console.log('do check fire')
+  // }
+
+  // ngAfterContentInit(): void {
+  //   console.log('content init fire')
+    
+  // }
+  // ngAfterContentChecked(): void {
+  //   console.log('content checket fire')
+  // }
+
+  // ngAfterViewInit(): void {
+  //   console.log('After view init fire')
+  // }
+
+  // ngAfterViewChecked(): void {
+  //   console.log('After view checket')
+  // }
   onSearch() {
     console.log('click working', this.search);
   }
+
+
 
 
 }
