@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StudentService } from '../services/student.service';
 import { Student } from '../model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -17,7 +18,7 @@ export class StudentListComponent implements OnInit{
   public students!: Student[];
   public filteredStudent!: Student[];
 
-  constructor(private studentService: StudentService) {}
+  constructor(private studentService: StudentService, private router: Router) {}
 
   ngOnInit(): void {
     this.students = this.studentService.getStudentList();
@@ -38,6 +39,11 @@ export class StudentListComponent implements OnInit{
 
   deleteStudent(index: number) {
     this.filteredStudent.splice(index, 1);
+  }
+
+  goTo() {
+    console.log('go to')
+    this.router.navigate(['create-student'])
   }
 
 }
