@@ -53,4 +53,10 @@ export class StudentService {
   getStudentList(): Student[] {
     return students;
   }
+
+  getStudentDetails(id: string) {
+    return students.find((std: Student)=>{
+      return std.id === id;
+    })
+  }
 }

@@ -46,4 +46,9 @@ export class StudentListComponent implements OnInit{
     this.router.navigate(['create-student'])
   }
 
+  viewStudent(id: string) {
+    console.log('student id', id)
+    this.router.navigate(['view-student', id]);
+  }
+
 }

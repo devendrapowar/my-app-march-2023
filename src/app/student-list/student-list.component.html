@@ -39,11 +39,14 @@
     <tbody>
         <tr *ngFor="let std of filteredStudent; let i = index"
             [ngClass]="{'even-student': i%2==0, 'odd-student': i%2!=0}">
-            <td>{{std.name}}{{i}}</td>
+            <td>{{std.name}}</td>
             <td>{{std.age}}</td>
             <td>{{std.email}}</td>
             <td>{{std.number}}</td>
-            <td><button class="btn btn-primary" (click)="deleteStudent(i)">Delete</button></td>
+            <td>
+                <button class="btn btn-primary" (click)="deleteStudent(i)">Delete</button>
+                <button class="btn btn-primary ms-2" (click)="viewStudent(std.id)">View</button>
+            </td>
         </tr>
     </tbody>
 </table>
