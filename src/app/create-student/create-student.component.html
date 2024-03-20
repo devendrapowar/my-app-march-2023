@@ -10,7 +10,13 @@
         <div class="col-6">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName="name">
+                <input type="text" class="form-control"
+                    [ngClass]="{'is-invalid': this.studentForm?.get('name')?.touched && this.studentForm?.get('name')?.invalid}"
+                    id="name" placeholder="Enter Name" formControlName="name">
+                <div class="invalid-feedback d-block" *ngIf="this.studentForm?.get('name')?.touched && this.studentForm?.get('name')?.invalid">
+                    <div *ngIf="this.studentForm?.get('name')?.errors?.['required']">This filed is required.</div>
+                    <div *ngIf="this.studentForm?.get('name')?.errors?.['minlength']">Minimum 2 char required.</div>
+                </div>
             </div>
         </div>
         <div class="col-6">

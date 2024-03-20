@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from '../services/student.service';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-student',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass, NgIf],
   templateUrl: './create-student.component.html',
   styleUrl: './create-student.component.scss'
 })
@@ -17,7 +18,7 @@ export class CreateStudentComponent implements OnInit{
   ngOnInit(): void {
     this.studentForm = this.fb.group({
       img: [''],
-      name: [''],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       age: [''],
       email: [''],
       number: ['']
@@ -31,8 +32,10 @@ export class CreateStudentComponent implements OnInit{
 
   saveStudent() {
     console.log('student form', this.studentForm);
-    this.studentService.saveStudent(this.studentForm.value);
-    this.goTo();
+    if(this.studentForm.valid) {
+      this.studentService.saveStudent(this.studentForm.value);
+      this.goTo();
+    }
   }
 
 }
