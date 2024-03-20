@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../model';
 
-const students: Student[] =  [
+const STUDENT: Student[] =  [
   {
     img: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
     id: 's1',
@@ -47,16 +47,21 @@ const students: Student[] =  [
   providedIn: 'root'
 })
 export class StudentService {
-
+  public students: Student[] =STUDENT;
   constructor() { }
 
   getStudentList(): Student[] {
-    return students;
+    return this.students;
   }
 
   getStudentDetails(id: string) {
-    return students.find((std: Student)=>{
+    return this.students.find((std: Student)=>{
       return std.id === id;
     })
+  }
+
+  saveStudent(std: Student) {
+    std.id = 'st' + this.students.length;
+    this.students.unshift(std);
   }
 }
