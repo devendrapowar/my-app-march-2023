@@ -21,9 +21,10 @@ export class StudentListComponent implements OnInit{
   constructor(private studentService: StudentService, private router: Router) {}
 
   ngOnInit(): void {
-    this.students = this.studentService.getStudentList();
-    console.log('students', this.students);
-    this.searchStudent()
+    this.studentService.getStudentList().subscribe((res)=>{
+      this.students = res;
+      this.searchStudent()
+    });
   }
   
   showTable() {
@@ -37,8 +38,11 @@ export class StudentListComponent implements OnInit{
     })
   }
 
-  deleteStudent(index: number) {
-    this.filteredStudent.splice(index, 1);
+  deleteStudent(id: string) {
+    this.studentService.deleteStudent(id).subscribe((res)=>{
+      this.students = res;
+      this.searchStudent()
+    })
   }
 
   goTo() {
@@ -49,6 +53,11 @@ export class StudentListComponent implements OnInit{
   viewStudent(id: string) {
     console.log('student id', id)
     this.router.navigate(['view-student', id]);
+  }
+
+  editStudent(id: string) {
+    console.log('student id', id)
+    this.router.navigate(['edit-student', id]);
   }
 
 }

@@ -20,9 +20,11 @@ export class ViewStudentComponent {
   constructor(private router: Router, private studentService: StudentService) {}
 
   initStudent(id: string) {
-    this.student = this.studentService.getStudentDetails(id);
-    console.log('this.student', this.student)
+    this.studentService.getStudentDetails(id).subscribe((res: any)=>{
+      this.student = res;
+    });
   }
+  
   goTo() {
     this.router.navigate(['student-list'])
   }

@@ -44,8 +44,9 @@
             <td>{{std.email}}</td>
             <td>{{std.number}}</td>
             <td>
-                <button class="btn btn-primary" (click)="deleteStudent(i)">Delete</button>
+                <button class="btn btn-primary" (click)="deleteStudent(std.id)">Delete</button>
                 <button class="btn btn-primary ms-2" (click)="viewStudent(std.id)">View</button>
+                <button class="btn btn-primary ms-2" (click)="editStudent(std.id)">Edit</button>
             </td>
         </tr>
     </tbody>
