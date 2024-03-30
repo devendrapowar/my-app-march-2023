@@ -47,6 +47,11 @@ export class HeaderComponent  { //implements OnInit, DoCheck, AfterContentInit, 
   }
 
 
+  insideHederFunction() {
+    console.log('inside header function');
+  }
+
+
 
 
 }

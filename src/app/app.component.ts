@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -13,5 +13,11 @@ import { StudentListComponent } from './student-list/student-list.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  @ViewChild('header') header!: HeaderComponent;
   title = 'my-app-march-2023';
+
+  parentMethod() {
+
+    this.header.insideHederFunction();
+  }
 }
