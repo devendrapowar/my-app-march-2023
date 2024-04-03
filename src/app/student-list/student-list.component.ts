@@ -1,18 +1,21 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, DatePipe, LowerCasePipe, NgClass, NgFor, NgIf, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StudentService } from '../services/student.service';
 import { Student } from '../model';
 import { Router } from '@angular/router';
+import { ConvertAgePipe } from '../pipes/convert-age.pipe';
+import { ReverseStringPipe } from '../pipes/reverse-string.pipe';
 
 @Component({
   selector: 'app-student-list',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, FormsModule],
+  imports: [NgFor, NgIf, NgClass, FormsModule, ConvertAgePipe, ReverseStringPipe, UpperCasePipe, TitleCasePipe, CurrencyPipe, DatePipe],
   templateUrl: './student-list.component.html',
   styleUrl: './student-list.component.scss',
 })
 export class StudentListComponent implements OnInit{
+  public date = new Date();
   public toggleStudent: boolean = false;
   public searchByName: string = '';
   public students!: Student[];

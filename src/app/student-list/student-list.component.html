@@ -30,7 +30,7 @@
             <th>
                 number
             </th>
-
+            <th>Date</th>
             <th>
                 action
             </th>
@@ -39,10 +39,11 @@
     <tbody>
         <tr *ngFor="let std of filteredStudent; let i = index"
             [ngClass]="{'even-student': i%2==0, 'odd-student': i%2!=0}">
-            <td>{{std.name}}</td>
-            <td>{{std.age}}</td>
+            <td>{{std.name | uppercase | reverseString }}</td>
+            <td>{{std.age | convertAge: 'days'}}</td>
             <td>{{std.email}}</td>
-            <td>{{std.number}}</td>
+            <td>{{std.number | currency: 'INR'}}</td>
+            <td>{{date | date: 'MM/dd/YYYY'}}</td>
             <td>
                 <button class="btn btn-primary" (click)="deleteStudent(std.id)">Delete</button>
                 <button class="btn btn-primary ms-2" (click)="viewStudent(std.id)">View</button>
